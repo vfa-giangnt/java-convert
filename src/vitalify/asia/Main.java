@@ -8,6 +8,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         File file = new File("./myfile.txt");
+        createNewFile(file);
+
         BufferedInputStream bufferedInputStream = null;
         FileInputStream fileInputStream = null;
 
@@ -31,6 +33,21 @@ public class Main {
                 System.out.println("Error in InputStream close(): " + exception);
                 exception.printStackTrace();
             }
+        }
+    }
+
+    private static void createNewFile(File file) {
+        try {
+            boolean fvar = file.createNewFile();
+            if (fvar) {
+                System.out.println("File has been created successfully");
+            } else {
+                System.out
+                        .println("File already present at the specific location");
+            }
+        } catch (IOException exception) {
+            System.out.println("Exception Occurred");
+            exception.printStackTrace();
         }
     }
 }
